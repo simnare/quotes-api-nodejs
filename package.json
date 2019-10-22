@@ -1,0 +1,28 @@
+{
+  "name": "quotes_api",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "engines": {
+    "node": ">= 8.2"
+  },
+  "scripts": {
+    "server": "babel-node ./src/bin/www",
+    "dev": "NODE_ENV=development APP_LOG_LEVEL=debug npm run-script server",
+    "watch": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Simonas Nareckas",
+  "dependencies": {
+    "express": "^4.17.1",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "nodemon": "^1.19.4"
+  }
+}
