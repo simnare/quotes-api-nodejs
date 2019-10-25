@@ -10,10 +10,10 @@ export default class Client {
     this.url = url
     this.accessKey = accessKey
     this.logger = logger || getLogger()
+    this.requestsMap = {}
   }
 
   async getRates (baseCurrency) {
-    // TODO prevent firing multiple requests when cache is still not populated
     const response = await httpGet(
       this.url,
       { params: { base: baseCurrency, access_key: this.accessKey } }
@@ -22,7 +22,7 @@ export default class Client {
     if (response.status === 200 && response.data && response.data.success) {
       return response.data.rates
     } else {
-      this.logger.debug('received malformed response from rates api', { response })
+      this.logger.warn('received malformed response from rates api', { response })
       throw new Error('Received malformed response from rates api')
     }
   }

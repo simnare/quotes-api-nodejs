@@ -10,15 +10,8 @@ describe('RatesCache', () => {
 
   test('returns expected value if cache is set', () => {
     const cache = new Cache(new Storage())
-    cache.set('FOO', { BAR: 3.14, BAZ: 1.23 })
+    cache.set({ FOO: 1, BAR: 3.14, BAZ: 1.23 })
 
-    expect(cache.get('FOO', 'BAZ')).toBe(1.23)
-  })
-
-  test('stores exchange rates by base currency', () => {
-    const cache = new Cache(new Storage())
-    cache.set('FOO', { BAR: 42 })
-
-    expect(cache.get('FOO', 'BAR')).toBe(42)
+    expect(cache.get('FOO', 'BAZ')).toBe(1.23 / 1)
   })
 })

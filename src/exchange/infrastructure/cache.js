@@ -1,6 +1,7 @@
 export default class RatesCache {
   constructor (storage) {
     this.storage = storage
+    this.key = 'exchange_rates'
   }
 
   /**
@@ -13,19 +14,18 @@ export default class RatesCache {
     baseCurrency = baseCurrency.toUpperCase()
     targetCurrency = targetCurrency.toUpperCase()
 
-    const rates = this.storage.get(baseCurrency)
-    if (rates && rates[targetCurrency]) {
-      return rates[targetCurrency]
+    const rates = this.storage.get(this.key)
+    if (rates && rates[targetCurrency] && rates[baseCurrency]) {
+      return rates[targetCurrency] / rates[baseCurrency]
     }
 
     return undefined
   }
 
   /**
-   * @param {String} baseCurrency
    * @param {Object} rates
    */
-  set (baseCurrency, rates) {
-    this.storage.set(baseCurrency.toUpperCase(), rates)
+  set (rates) {
+    this.storage.set(this.key, rates)
   }
 }
