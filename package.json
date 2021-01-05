@@ -17,7 +17,7 @@
   "keywords": [],
   "author": "Simonas Nareckas",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "ttl-mem-cache": "^4.1.0",
     "winston": "^3.2.1"
